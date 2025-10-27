@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Acompanhe seus jogos',
+                        'Acompanhe suas partidas',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: Theme.of(context).colorScheme.onPrimaryContainer,
                             ),
@@ -66,9 +66,9 @@ class HomeScreen extends StatelessWidget {
                       color: Theme.of(context).colorScheme.secondaryContainer,
                       child: ListTile(
                         leading: const Icon(Icons.timer),
-                        title: const Text('Jogo em Andamento'),
+                        title: const Text('Partida em Andamento'),
                         subtitle: Text(
-                          'Iniciado ${_formatDateTime(gameProvider.currentGame!.startTime)}',
+                          'Iniciado há ${_formatDateTime(gameProvider.currentGame!.startTime)}',
                         ),
                         trailing: const Icon(Icons.arrow_forward_ios),
                         onTap: () {
@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     _MenuButton(
                       icon: Icons.add_circle,
-                      label: 'Novo Jogo',
+                      label: 'Nova Partida',
                       onTap: () {
                         Navigator.push(
                           context,
@@ -141,7 +141,7 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           _StatItem(
-                            label: 'Jogos',
+                            label: 'Partida',
                             value: totalGames.toString(),
                           ),
                           _StatItem(
@@ -166,11 +166,11 @@ class HomeScreen extends StatelessWidget {
     final difference = now.difference(dateTime);
 
     if (difference.inMinutes < 60) {
-      return '${difference.inMinutes}m ago';
+      return '${difference.inMinutes}m atrás';
     } else if (difference.inHours < 24) {
-      return '${difference.inHours}h ago';
+      return '${difference.inHours}h atrás';
     } else {
-      return '${difference.inDays}d ago';
+      return '${difference.inDays}d atrás';
     }
   }
 
@@ -304,7 +304,7 @@ class _ManagePlayersDialogState extends State<_ManagePlayersDialog> {
                       final player = gameProvider.availablePlayers[index];
                       return ListTile(
                         title: Text(player.name),
-                        subtitle: Text('Jogos: ${player.gamesPlayed} | Vitórias: ${player.gamesWon}'),
+                        subtitle: Text('Partidas: ${player.gamesPlayed} | Vitórias: ${player.gamesWon}'),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () async {

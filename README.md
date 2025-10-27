@@ -22,7 +22,7 @@ Key aspects of the game:
   - Dirty Canastas (Canastra Suja) - 100 points
   - Red 3s (3 Vermelhos) - Always +100 points each
   - Black 3s (3 Pretos) - -100 points penalty each
-  - Meld points (Pontos de Jogo)
+  - Meld points (Pontos de Cartas)
   - Cards in hand deductions (Cartas na Mão)
   - Going out bonus (Batida) - 100 points
 - **Smart Validation**: Automatic 3s tracking prevents invalid entries (can't exceed deck limits)
@@ -60,27 +60,27 @@ flutter run
 3. Players are saved permanently and can be reused across multiple games
 
 ### Starting a New Game
-1. **Tap "Novo Jogo"** (New Game) from the home screen
+1. **Tap "Nova Partida"** (New Match) from the home screen
 2. **Configure Game Settings**:
    - Set "Quantidade de baralhos" (Number of decks): 1-4 decks (default: 2)
 3. **Set Up Teams**:
-   - Enter team names (default: Time 1, Time 2)
+   - Enter team names (default: Equipe 1, Equipe 2)
    - Tap "Adicionar Jogador" (Add Player) for each team
    - Use checkboxes to select multiple players at once
    - Click "Confirmar" (Confirm) to add selected players
    - Add 2-4 teams (minimum 2 teams required)
-4. **Tap "Iniciar Jogo"** (Start Game) when ready
+4. **Tap "Iniciar Partida"** (Start Match) when ready
 
 ### Playing a Game
 1. **From the Game Screen**, tap "Adicionar Rodada" (Add Round) to start scoring
-2. **At the top**, select "Qual time bateu?" (Which team went out?):
+2. **At the top**, select "Qual equipe bateu?" (Which team went out?):
    - Select the team that went out, or
-   - Select "Nenhum time bateu" (No team went out) if round ended without anyone going out
+   - Select "Nenhuma equipe bateu" (No team went out) if round ended without anyone going out
 3. **For Each Team**, enter:
-   - **Canastas**: Limpa (Clean) and Suja (Dirty) counts
+   - **Canastras**: Limpa (Clean) and Suja (Dirty) counts
    - **3 Vermelhos**: Number of red 3s (max limited by deck count)
    - **3 Pretos**: Number of black 3s (max limited by deck count)
-   - **Pontos de Jogo**: Meld points value
+   - **Pontos de Cartas**: Meld points value
    - **Cartas na Mão**: Point value of cards still in hand
 4. **View Breakdown**: See real-time score calculation in "Detalhamento" section
 5. **Tap "Salvar Rodada"** (Save Round) to record the round
@@ -115,15 +115,15 @@ The app implements Brazilian Canastra scoring rules:
 - Maximum 3s per color = Number of decks × 4 (e.g., 2 decks = 8 red 3s max total across all teams)
 
 ### Card Values (for Melds)
-- Joker: 50 points | Ace: 20 points | 2 (wild): 20 points
+- Joker: 20 points | Ace: 15 points | 2 (wild): 10 points
 - K, Q, J, 10, 9, 8: 10 points each
 - 7, 6, 5, 4: 5 points each
 
 ### Other Scoring
 - **Batida** (Going out): **100 points**
-- **Pontos de Jogo** (Meld points): Sum of card values in melds
+- **Pontos de Cartas** (Meld points): Sum of card values in melds
 - **Cartas na Mão** (Cards in hand): Point value deducted from score
-- **Abertura Mínima** (Minimum meld): Varies by current score (15/50/90/120 points)
+- **Abertura Mínima** (Minimum meld): Varies by current score (45/75/90 points)
 
 ### Winning Conditions
 - **Target score**: **3000 points** (fixed)

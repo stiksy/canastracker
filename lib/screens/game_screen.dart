@@ -16,8 +16,8 @@ class GameScreen extends StatelessWidget {
 
         if (game == null) {
           return Scaffold(
-            appBar: AppBar(title: const Text('Game')),
-            body: const Center(child: Text('No active game')),
+            appBar: AppBar(title: const Text('Canastra')),
+            body: const Center(child: Text('Nenhuma partida ativa')),
           );
         }
 
@@ -26,7 +26,7 @@ class GameScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text(isCompleted ? 'Jogo Concluído' : 'Jogo em Andamento'),
+            title: Text(isCompleted ? 'Partida Concluída' : 'Partida em Andamento'),
             actions: [
               if (!isCompleted)
                 IconButton(
@@ -49,11 +49,11 @@ class GameScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Current Scores',
+                            'Pontuação Atual',
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                           Text(
-                            'Target: ${NumberFormat('#,###').format(game.targetScore)}',
+                            'Meta: ${NumberFormat('#,###').format(game.targetScore)}',
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
@@ -204,13 +204,13 @@ class GameScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Informações do Jogo'),
+        title: const Text('Informações da Partida'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _InfoRow('Iniciado', DateFormat('dd/MM/yyyy HH:mm').format(game.startTime)),
-            _InfoRow('Pontuação Meta', NumberFormat('#,###').format(game.targetScore)),
+            _InfoRow('Meta de Pontos', NumberFormat('#,###').format(game.targetScore)),
             _InfoRow('Rodadas Jogadas', game.rounds.length.toString()),
           ],
         ),
@@ -263,7 +263,7 @@ class _RoundCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: ExpansionTile(
-        title: Text('Round ${round.roundNumber}'),
+        title: Text('Rodada ${round.roundNumber}'),
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -301,17 +301,19 @@ class _RoundCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           if (teamScore.cleanCanastas > 0)
-                            _ScoreDetail('Canastras Limpas', teamScore.cleanCanastas),
+                            _ScoreDetail('Canastras Limpas', teamScore.cleanCanastas * 200),
                           if (teamScore.dirtyCanastas > 0)
-                            _ScoreDetail('Canastras Sujas', teamScore.dirtyCanastas),
+                            _ScoreDetail('Canastras Sujas', teamScore.dirtyCanastas * 100),
                           if (teamScore.redThrees > 0)
-                            _ScoreDetail('3 Vermelhos', teamScore.redThrees),
+                            _ScoreDetail('3 Vermelhos', teamScore.redThrees * 100),
+                          if (teamScore.blackThrees > 0)
+                            _ScoreDetail('3 Pretos', teamScore.blackThrees * 100),
                           if (teamScore.meldPoints > 0)
-                            _ScoreDetail('Pontos de Jogo', teamScore.meldPoints),
+                            _ScoreDetail('Pontos de Cartas', teamScore.meldPoints),
                           if (teamScore.cardsInHand > 0)
                             _ScoreDetail('Cartas na Mão', -teamScore.cardsInHand),
                           if (teamScore.wentOut)
-                            const _ScoreDetail('Bateu', 100),
+                            const _ScoreDetail('Batida', 100),
                         ],
                       ),
                     ),
@@ -345,7 +347,7 @@ class _ScoreDetail extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           Text(
-            value >= 0 ? '+$value' : value.toString(),
+            value >= 0 ? '$value' : value.toString(),
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: value >= 0 ? Colors.green : Colors.red,
                 ),

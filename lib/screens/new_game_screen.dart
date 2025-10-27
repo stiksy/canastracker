@@ -22,15 +22,15 @@ class _NewGameScreenState extends State<NewGameScreen> {
   void initState() {
     super.initState();
     // Start with 2 empty teams
-    _teams.add(_TeamSetup(id: _uuid.v4(), name: 'Time 1'));
-    _teams.add(_TeamSetup(id: _uuid.v4(), name: 'Time 2'));
+    _teams.add(_TeamSetup(id: _uuid.v4(), name: 'Equipe 1'));
+    _teams.add(_TeamSetup(id: _uuid.v4(), name: 'Equipe 2'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Novo Jogo'),
+        title: const Text('Nova Partida'),
       ),
       body: Column(
         children: [
@@ -112,12 +112,12 @@ class _NewGameScreenState extends State<NewGameScreen> {
                       setState(() {
                         _teams.add(_TeamSetup(
                           id: _uuid.v4(),
-                          name: 'Time ${_teams.length + 1}',
+                          name: 'Equipe ${_teams.length + 1}',
                         ));
                       });
                     },
                     icon: const Icon(Icons.add),
-                    label: const Text('Adicionar Time'),
+                    label: const Text('Adicionar Equipe'),
                   ),
               ],
             ),
@@ -132,7 +132,7 @@ class _NewGameScreenState extends State<NewGameScreen> {
                 child: FilledButton.icon(
                   onPressed: _canStartGame() ? _startGame : null,
                   icon: const Icon(Icons.play_arrow),
-                  label: const Text('Iniciar Jogo'),
+                  label: const Text('Iniciar Partida'),
                   style: FilledButton.styleFrom(
                     padding: const EdgeInsets.all(16),
                   ),
@@ -238,7 +238,7 @@ class _TeamCardState extends State<_TeamCard> {
                   child: TextField(
                     controller: _nameController,
                     decoration: const InputDecoration(
-                      labelText: 'Team Name',
+                      labelText: 'Nome da Equipe',
                       border: OutlineInputBorder(),
                     ),
                     onChanged: widget.onNameChanged,
@@ -350,7 +350,7 @@ class _PlayerSelectionDialogState extends State<_PlayerSelectionDialog> {
 
                 return CheckboxListTile(
                   title: Text(player.name),
-                  subtitle: Text('Jogos: ${player.gamesPlayed}'),
+                  subtitle: Text('Partidas: ${player.gamesPlayed}'),
                   value: isSelected,
                   onChanged: (selected) {
                     setState(() {

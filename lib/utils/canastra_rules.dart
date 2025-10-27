@@ -15,8 +15,8 @@ class CanastraRules {
 
   // Card point values
   static const Map<String, int> cardValues = {
-    'Joker': 50,
-    'Ace': 20,
+    'Joker': 20,
+    'Ace': 15,
     'King': 10,
     'Queen': 10,
     'Jack': 10,
@@ -27,15 +27,14 @@ class CanastraRules {
     '6': 5,
     '5': 5,
     '4': 5,
-    '2': 20, // Wild card
+    '2': 10, // Wild card
   };
 
   // Minimum meld requirements by current score
   static int getMinimumMeldRequirement(int currentScore) {
-    if (currentScore < 0) return 15;
-    if (currentScore < 1500) return 50;
-    if (currentScore < 3000) return 90;
-    return 120;
+    if (currentScore < 1500) return 45;
+    if (currentScore < 3000) return 75;
+    return 90;
   }
 
   // Calculate total score for a round

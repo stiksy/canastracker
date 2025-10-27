@@ -28,19 +28,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Game History'),
+        title: const Text('Histórico'),
         actions: [
           PopupMenuButton(
             itemBuilder: (context) => [
               CheckedPopupMenuItem(
                 checked: _showCompleted,
                 value: 'completed',
-                child: const Text('Show Completed'),
+                child: const Text('Completas'),
               ),
               CheckedPopupMenuItem(
                 checked: _showInProgress,
                 value: 'in_progress',
-                child: const Text('Show In Progress'),
+                child: const Text('Em Andamento'),
               ),
             ],
             onSelected: (value) {
@@ -83,7 +83,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'No games yet',
+                    'Nenhuma partida',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: Colors.grey,
                         ),
@@ -147,7 +147,7 @@ class _GameCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    DateFormat('MMM dd, yyyy • HH:mm').format(game.startTime),
+                    DateFormat('yMd').format(game.startTime),
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const Spacer(),
@@ -166,7 +166,7 @@ class _GameCard extends StatelessWidget {
                     const Icon(Icons.emoji_events, color: Colors.amber, size: 20),
                     const SizedBox(width: 4),
                     Text(
-                      'Winner: ${winner.name}',
+                      'Vencedor: ${winner.name}',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -214,7 +214,7 @@ class _GameCard extends StatelessWidget {
               }),
               const SizedBox(height: 8),
               Text(
-                '${game.rounds.length} rounds played',
+                '${game.rounds.length} rodadas jogadas',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontStyle: FontStyle.italic,
                     ),
@@ -249,19 +249,19 @@ class _GameCard extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Game'),
-        content: const Text('Are you sure you want to delete this game?'),
+        title: const Text('Excluir Partida'),
+        content: const Text('Você tem certeza de que deseja excluir esta partida?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text('Cancelar'),
           ),
           FilledButton(
             onPressed: () {
               Navigator.pop(context);
               onDelete();
             },
-            child: const Text('Delete'),
+            child: const Text('Excluir'),
           ),
         ],
       ),
@@ -299,18 +299,18 @@ class _GameDetailsSheet extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Game Details',
+            'Detalhes da Partida',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 16),
-          _DetailRow('Started', DateFormat('MMM dd, yyyy HH:mm').format(game.startTime)),
+          _DetailRow('Início', DateFormat('yMd').format(game.startTime)),
           if (game.endTime != null)
-            _DetailRow('Ended', DateFormat('MMM dd, yyyy HH:mm').format(game.endTime!)),
-          _DetailRow('Target Score', NumberFormat('#,###').format(game.targetScore)),
-          _DetailRow('Rounds', game.rounds.length.toString()),
+            _DetailRow('Fim', DateFormat('yMd').format(game.endTime!)),
+          _DetailRow('Meta', NumberFormat('#,###').format(game.targetScore)),
+          _DetailRow('Rodadas', game.rounds.length.toString()),
           const Divider(height: 32),
           Text(
-            'Final Scores',
+            'Placar final',
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
@@ -353,7 +353,7 @@ class _GameDetailsSheet extends StatelessWidget {
               controller: scrollController,
               children: [
                 Text(
-                  'Round by Round',
+                  'Rodada a Rodada',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 8),
@@ -366,7 +366,7 @@ class _GameDetailsSheet extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Round ${round.roundNumber}',
+                            'Rodada ${round.roundNumber}',
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),

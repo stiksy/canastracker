@@ -123,11 +123,11 @@ lib/
 Located in `lib/utils/canastra_rules.dart`:
 
 ### Point Values
-- Joker: 50 points
-- Ace: 20 points
+- Joker: 20 points
+- Ace: 15 points
 - K, Q, J, 10, 9, 8: 10 points each
 - 7, 6, 5, 4: 5 points each
-- 2 (wild card): 20 points
+- 2 (wild card): 10 points
 
 ### Canasta Bonuses
 - **Clean Canasta** (Canastra Limpa - no wild cards): **200 points**
@@ -143,10 +143,9 @@ Located in `lib/utils/canastra_rules.dart`:
 ### Other Rules
 - Going out bonus (Batida): **100 points**
 - Minimum meld requirements (Abertura mínima) vary by current score:
-  - Below 0: 15 points
-  - 0-1499: 50 points
-  - 1500-2999: 90 points
-  - 3000+: 120 points
+  - 0-1499: 45 points
+  - 1500-2999: 75 points
+  - 3000+: 90 points
 - To go out: Need at least 2 canastas, one must be clean
 - **Target score: 3000 points** (fixed)
 - **Number of decks: Configurable (1-4, default 2)**
@@ -282,6 +281,29 @@ test/
 - **Instructions**: Complete guide available at `assets/icon/ICON_INSTRUCTIONS.md`
 - **Generation**: Run `flutter pub run flutter_launcher_icons` once icon files are added
 - **Status**: Infrastructure ready, awaiting icon artwork
+
+### UI Polish & Rule Adjustments (v1.4)
+- **Terminology Update**: Changed "Jogo" → "Partida" throughout the app for more appropriate Brazilian Portuguese
+- **Team Naming**: Changed "Time" → "Equipe" for team references
+- **Card Point Values** (IMPORTANT - Rules Changed):
+  - Joker: 50 → 20 points
+  - Ace: 20 → 15 points
+  - 2 (wild card): 20 → 10 points
+- **Minimum Meld Requirements** (IMPORTANT - Rules Changed):
+  - Removed "below 0" tier (was 15 points)
+  - 0-1499: 50 → 45 points
+  - 1500-2999: 90 → 75 points
+  - 3000+: 120 → 90 points
+- **UI Label Improvements**:
+  - Removed point values from counter labels (e.g., "Limpa (200)" → "Limpa")
+  - Changed "Pontos de Jogo" → "Pontos de Cartas" for clarity
+  - More natural Portuguese phrasing (e.g., "Iniciado há" instead of "Iniciado")
+  - Improved date formatting throughout (using DateFormat('yMd'))
+- **Score Display Enhancements**:
+  - Round breakdown now shows actual calculated points (cleanCanastas * 200, etc.)
+  - Added Black 3s display in round details view
+  - Removed "+" prefix from positive scores for cleaner appearance
+- **Location**: Changes span across all screen files (game_screen.dart, home_screen.dart, new_game_screen.dart, history_screen.dart, round_entry_screen.dart) and lib/utils/canastra_rules.dart
 
 ## File Locations Reference
 

@@ -40,7 +40,7 @@ class _RoundEntryScreenState extends State<RoundEntryScreen> {
         if (game == null) {
           return Scaffold(
             appBar: AppBar(title: const Text('Adicionar Rodada')),
-            body: const Center(child: Text('Nenhum jogo ativo')),
+            body: const Center(child: Text('Nenhuma partida iniciada')),
           );
         }
 
@@ -297,12 +297,12 @@ class _TeamScoreCard extends StatelessWidget {
 
             // Canastas
             Text(
-              'Canastas',
+              'Canastras',
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
             _CounterRow(
-              label: 'Limpa (200)',
+              label: 'Limpa',
               value: data.cleanCanastas,
               onChanged: (val) {
                 data.cleanCanastas = val;
@@ -310,7 +310,7 @@ class _TeamScoreCard extends StatelessWidget {
               },
             ),
             _CounterRow(
-              label: 'Suja (100)',
+              label: 'Suja',
               value: data.dirtyCanastas,
               onChanged: (val) {
                 data.dirtyCanastas = val;
@@ -327,7 +327,7 @@ class _TeamScoreCard extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             _CounterRow(
-              label: '3 Vermelhos (+100)',
+              label: '3 Vermelhos',
               value: data.redThrees,
               onChanged: (val) {
                 data.redThrees = val;
@@ -337,7 +337,7 @@ class _TeamScoreCard extends StatelessWidget {
               canIncrement: totalRedThrees < maxThreesPerColor,
             ),
             _CounterRow(
-              label: '3 Pretos (-100)',
+              label: '3 Pretos',
               value: data.blackThrees,
               onChanged: (val) {
                 data.blackThrees = val;
@@ -347,7 +347,7 @@ class _TeamScoreCard extends StatelessWidget {
               canIncrement: totalBlackThrees < maxThreesPerColor,
             ),
             _NumberInputRow(
-              label: 'Pontos de Jogo',
+              label: 'Pontos de Cartas',
               value: data.meldPoints,
               onChanged: (val) {
                 data.meldPoints = val;
