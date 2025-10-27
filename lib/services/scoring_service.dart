@@ -67,7 +67,7 @@ class ScoringService {
 
     // Melds
     if (roundScore.meldPoints > 0) {
-      breakdown['Pontos de Jogo'] = roundScore.meldPoints;
+      breakdown['Pontos de Cartas'] = roundScore.meldPoints;
     }
 
     // Cards in hand (negative)

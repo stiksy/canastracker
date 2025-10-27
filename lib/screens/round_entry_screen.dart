@@ -59,7 +59,7 @@ class _RoundEntryScreenState extends State<RoundEntryScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Qual time bateu?',
+                        'Qual equipe bateu?',
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -79,7 +79,7 @@ class _RoundEntryScreenState extends State<RoundEntryScreen> {
                         );
                       }),
                       RadioListTile<String?>(
-                        title: const Text('Nenhum time bateu'),
+                        title: const Text('Nenhuma equipe bateu'),
                         value: null,
                         groupValue: _teamThatWentOut,
                         onChanged: (value) {

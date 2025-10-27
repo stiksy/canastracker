@@ -256,12 +256,12 @@ test/
 ### Auto-Load In-Progress Games
 - **Feature**: Automatically loads in-progress game on app startup
 - **Method**: `GameProvider.loadInProgressGame()` called in `initialize()`
-- **Effect**: Home screen shows "Jogo em Andamento" card if active game exists
+- **Effect**: Home screen shows "Partida em Andamento" card if active game exists
 - **Location**: `lib/providers/game_provider.dart:27-35`
 
 ### Score Breakdown Display
 - **Feature**: Detailed score breakdown in round entry with Portuguese labels
-- **Items**: Canastra Limpa, Canastra Suja, 3 Vermelhos, 3 Pretos, Pontos de Jogo, Cartas na Mão, Batida
+- **Items**: Canastra Limpa, Canastra Suja, 3 Vermelhos, 3 Pretos, Pontos de Cartas, Cartas na Mão, Batida
 - **Colors**: Green for positive points, red for negative
 - **Location**: `lib/services/scoring_service.dart:44-84`, displayed in `round_entry_screen.dart`
 
