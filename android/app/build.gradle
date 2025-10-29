@@ -64,8 +64,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
-            signingConfig signingConfigs.release  // Change from debug to release
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
         }
